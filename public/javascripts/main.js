@@ -11,12 +11,17 @@
         events : { 
             welcome: function (data) {                          
                 var p    = document.createElement('p'),
+                    li    = document.createElement('li');
                    input = document.querySelector('input');
 
                 input.parentElement.removeChild(input.nextSibling);
                 input.parentElement.removeChild(input);
 
-                p.innerHTML = data.author + ' > ' + data.msg;                
+                li.textContent = data.name
+                document.querySelector('.sidebar-nav ul').appendChild(li);
+
+
+                p.textContent = data.author + ' > ' + data.msg;                
                 document.getElementById('chat-room').appendChild(p);  
             
             }

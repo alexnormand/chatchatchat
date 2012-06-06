@@ -13,7 +13,8 @@ e.setNickname = function(name) {
 
     _socket.set('nickname', name, function() {      
         _socket.emit('welcome', {
-            author: 'BOT', 
+            author: 'BOT',
+            name: name,
             msg: "Hello " + name
         });
     });
