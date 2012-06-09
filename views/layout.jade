@@ -16,23 +16,23 @@ html
                                 i.icon-plus.icon-white 
                                 |&nbsp;Add New Room
                           
-    div.container-fluid
-      div.row-fluid
-        div.span3
-          div.well.sidebar-nav
-            ul.nav.nav-list
-              li.nav-header In Chat             
-        div.span9
-          div#chat-room.hero-unit
-            input(placeholder='Enter Nickname here...', required).input-medium.search-query
-            button.btn Submit           
-            pre#chat-window
-            textarea(rows=5)#input-message    
-            button#send-message.btn Send
+        div.container-fluid
+          div.row-fluid
+            div.span3
+              div.well.sidebar-nav
+                ul.nav.nav-list
+                  li.nav-header In Chat             
+            div.span9
+              div#chat-room.hero-unit
+                input(placeholder='Enter Nickname here...', required).input-medium.search-query
+                button.btn Submit           
+                pre#chat-window
+                textarea(rows=5)#input-message    
+                button#send-message.btn Send
 
 
-script(src='/socket.io/socket.io.js') 
-script(src='/javascripts/main.js')
+        script(src='/socket.io/socket.io.js') 
+        script(src='/javascripts/main.js')
 
 
 
