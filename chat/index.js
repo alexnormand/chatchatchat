@@ -1,21 +1,24 @@
-var e = exports;
+var e = exports,
+    _socket,
+    io;
 
-var _socket;
-
-
+e.listen = function (app) {
+    io = require('socket.io').listen(app);
+    io.sockets.on('connection', e.connection);
+};
 
 e.connection = function (socket) {
     _socket = socket;
     socket.on('set nickname', e.setNickname);
 };
 
-e.setNickname = function(name) {  
+e.setNickname = function (name) {  
 
     _socket.set('nickname', name, function() {      
-        _socket.emit('welcome', {
+        io.sockets.emit('welcome', {
             author: 'BOT',
             name: name,
-            msg: "Hello " + name
+            msg: name + ' joined the chat room'
         });
     });
     

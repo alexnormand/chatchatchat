@@ -4,20 +4,22 @@
 
     var chat = {  
 
-        choosename: function() {             
+        choosename: function () {             
             socket.emit('set nickname', document.querySelector('input').value); 
         },
 
-        events : { 
+        events: { 
             welcome: function (data) {                          
-                var p    = document.createElement('p'),
+                var p     = document.createElement('p'),
                     li    = document.createElement('li');
-                   input = document.querySelector('input');
+                    input = document.querySelector('input');
 
-                input.parentElement.removeChild(input.nextSibling);
-                input.parentElement.removeChild(input);
+                if (input) {
+                    input.parentElement.removeChild(input.nextSibling);
+                    input.parentElement.removeChild(input);
+                }
 
-                li.textContent = data.name
+                li.textContent = data.name;
                 document.querySelector('.sidebar-nav ul').appendChild(li);
 
 
@@ -27,7 +29,7 @@
             }
         },
     
-        init : function () {
+        init: function () {
             socket.on('welcome', this.events.welcome);            
             document
                 .querySelector('button')

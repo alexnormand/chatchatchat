@@ -4,7 +4,7 @@
 
 var express = require('express'),
     app     = express.createServer(),
-    io      = require('socket.io').listen(app),
+    //io      = require('socket.io').listen(app),
     chat    = require(__dirname + '/chat'),
     routes  = require(__dirname + '/routes');
 
@@ -37,7 +37,9 @@ app.listen(3000, function(){
 
 
 
-//sockets
+// Start Chat 
 
-io.sockets.on('connection', chat.connection); 
+chat.listen(app);
+
+//io.sockets.on('connection', chat.connection); 
 
