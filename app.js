@@ -1,15 +1,12 @@
 /**
  * Module dependencies.
  */
-
 var express = require('express'),
     app     = express.createServer(),
-    //io      = require('socket.io').listen(app),
     chat    = require(__dirname + '/chat'),
     routes  = require(__dirname + '/routes');
 
 // Configuration
-
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -28,7 +25,6 @@ app.configure('production', function(){
 });
 
 // Routes
-
 app.get('/', routes.index);
 
 app.listen(3000, function(){
@@ -36,10 +32,8 @@ app.listen(3000, function(){
 });
 
 
-
 // Start Chat 
-
 chat.listen(app);
 
-//io.sockets.on('connection', chat.connection); 
+
 

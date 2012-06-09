@@ -10,7 +10,11 @@ html
                     a(href='#').brand #{title} 
                     ul.nav 
                         li.active 
-                            a(href='#') Home                                                                   
+                            a(href='#') Main Chat Room
+                        li
+                            a(href='#') 
+                                i.icon-plus.icon-white 
+                                |&nbsp;Add New Room
                           
     div.container-fluid
       div.row-fluid
@@ -20,12 +24,15 @@ html
               li.nav-header In Chat             
         div.span9
           div#chat-room.hero-unit
-            input(placeholder='Enter Nickname here...').input-medium.search-query
-            button.btn Submit
+            input(placeholder='Enter Nickname here...', required).input-medium.search-query
+            button.btn Submit           
+            pre#chat-window
+            textarea(rows=5)#input-message    
+            button#send-message.btn Send
+
 
 script(src='/socket.io/socket.io.js') 
 script(src='/javascripts/main.js')
-
 
 
 
