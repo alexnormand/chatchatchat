@@ -67,20 +67,23 @@
                 });
                 clientList.appendChild(frag);
 
-              
-                // Add welcome message and notify users of newcomers.
-                t = document.createTextNode(this.escapeString(data.msg, true) + '\n');
-                this.chatWindow.appendChild(t);
-                
-                // If The user has just entered the chat room for the first time
-                if(this.input) {
-                    [this.chatWindow, this.inputMsg, this.sendMsg].forEach(function (node) {
-                        node.style.display = 'block';
-                    });
+                // If the client has just entered the chatroom.
+                if (data.newcomer) {
+ 
+                    // Add welcome message and notify users of newcomers.
+                    t = document.createTextNode(this.escapeString(data.msg, true) + '\n');
+                    this.chatWindow.appendChild(t);
                     
-                    // Remove Choose Name input DOM Nodes 
-                    this.input.parentElement.removeChild(this.input.nextSibling);
-                    this.input.parentElement.removeChild(this.input);                
+                    // If The user has just entered the chat room for the first time
+                    if(this.input) {
+                        [this.chatWindow, this.inputMsg, this.sendMsg].forEach(function (node) {
+                            node.style.display = 'block';
+                        });
+                        
+                        // Remove Choose Name input DOM Nodes 
+                        this.input.parentElement.removeChild(this.input.nextSibling);
+                        this.input.parentElement.removeChild(this.input);                
+                    }
                 }
             },
 

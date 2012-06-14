@@ -53,10 +53,17 @@ e.getClients = function (fn) {
 e.setNickname = function (socket, name) {  
     socket.set('nickname', name, function() {     
         e.getClients(function (clients) {
-            io.sockets.emit('welcome', {
+            socket.emit('welcome', {
+                clients: clients,
+                msg: name + ' joined the chat room',
+                newcomer: true
+            });
+
+            socket.broadcast.emit('welcome', {
                 clients: clients,
                 msg: name + ' joined the chat room'
-            }); 
+            });
+ 
             
         });                                       
     }); 
