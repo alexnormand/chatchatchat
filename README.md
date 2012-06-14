@@ -9,7 +9,7 @@ Build instructions
 ===================
 
     $ git clone git://github.com/alexnormand/chatchatchat.git
-    $ cd aggregator-node   
+    $ cd chatchatchat   
     $ npm install
     $ node app.js
 
