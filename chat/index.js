@@ -16,9 +16,7 @@ e.configure = function () {
             , 'jsonp-polling'
         ]);
     });
-}
-
-
+};
 
 e.listen = function (app) {
     io = require('socket.io').listen(app);
