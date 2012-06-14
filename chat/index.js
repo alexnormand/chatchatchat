@@ -1,9 +1,29 @@
 var e = {},
     io;
 
+// Socket.io config settings
+e.configure = function () {
+    io.configure('production', function() {
+        io.enable('browser client minification');  
+        io.enable('browser client etag');          
+        io.enable('browser client gzip');          
+        io.set('log level', 1);                    
+        io.set('transports', [                     
+            'websocket'
+            , 'flashsocket'
+            , 'htmlfile'
+            , 'xhr-polling'
+            , 'jsonp-polling'
+        ]);
+    });
+}
+
+
+
 e.listen = function (app) {
     io = require('socket.io').listen(app);
     io.on('connection', e.connection);
+    e.configure();
 };
 
 e.connection = function (socket) {   
