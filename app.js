@@ -3,6 +3,7 @@
  */
 var express = require('express'),
     app     = express.createServer(),
+    gzippo =  require('gzippo'),
     chat    = require(__dirname + '/chat'),
     routes  = require(__dirname + '/routes');
 
@@ -13,7 +14,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+  app.use(gzippo.staticGzip(__dirname + '/public'));
 });
 
 app.configure('development', function(){
