@@ -47,7 +47,7 @@
                 if (data.newcomer) {
  
                     // Add welcome message and notify users of newcomers.
-                    t = document.createTextNode(data.msg) + '\n');
+                    t = document.createTextNode(data.msg + '\n');
                     this.chatWindow.appendChild(t);
                     
                     // If The user has just entered the chat room for the first time
