@@ -8,38 +8,14 @@
         chatWindow : document.getElementById('chat-window'),
         inputMsg   : document.getElementById('input-message'),
         sendMsg    : document.getElementById('send-message'), 
-        
-
-        escapeString: function (str, reverse) {            
-            if (typeof str === 'string') {
-                // ex:  &amp; => &
-                if (typeof reverse === 'boolean' && reverse) {
-                    return str.replace(/&amp;/g, '&')
-                              .replace(/&lt;/g, '<')
-                              .replace(/&gt;/g, '>')
-                              .replace(/&quot;/g, '"')
-                              .trim();            
-                    
-                  //ex: & => &amp;
-                } else {
-                    return str.replace(/&/g, '&amp;')
-                              .replace(/</g, '&lt;')
-                              .replace(/>/g, '&gt;')
-                              .replace(/"/g, '&quot;')
-                              .trim();            
-                }
-            } else {
-                return '';
-            }
-        },
-   
+                  
 
         choosename: function () {             
-            socket.emit('set nickname', this.escapeString(this.input.value)); 
+            socket.emit('set nickname', this.input.value.trim()); 
         },
 
         sendMessage: function () {           
-            var msg = this.escapeString(this.inputMsg.value);
+            var msg = this.inputMsg.value.trim();
 
             if (msg) {                                
                 this.inputMsg.value = '';
@@ -62,7 +38,7 @@
                 
                 data.clients.forEach(function (c) {
                     var li = document.createElement('li');
-                    li.textContent = that.escapeString(c, true);                 
+                    li.textContent = c;                 
                     frag.appendChild(li);
                 });
                 clientList.appendChild(frag);
@@ -71,7 +47,7 @@
                 if (data.newcomer) {
  
                     // Add welcome message and notify users of newcomers.
-                    t = document.createTextNode(this.escapeString(data.msg, true) + '\n');
+                    t = document.createTextNode(data.msg) + '\n');
                     this.chatWindow.appendChild(t);
                     
                     // If The user has just entered the chat room for the first time
@@ -88,7 +64,7 @@
             },
 
             message: function (data) {
-                var t = document.createTextNode(this.escapeString(data.author, true) + ' > ' + this.escapeString(data.msg, true) + '\n');
+                var t = document.createTextNode(data.author) + ' > ' + data.msg + '\n');
                 this.chatWindow.appendChild(t);
                 window.scrollTo(0, document.body.scrollHeight);
             }
