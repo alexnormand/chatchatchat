@@ -64,7 +64,7 @@
             },
 
             message: function (data) {
-                var t = document.createTextNode(data.author) + ' > ' + data.msg + '\n');
+                var t = document.createTextNode(data.author + ' > ' + data.msg + '\n');
                 this.chatWindow.appendChild(t);
                 window.scrollTo(0, document.body.scrollHeight);
             }
