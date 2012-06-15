@@ -1,5 +1,5 @@
 (function(window, undefined) {
-    var socket = io.connect('http://localhost');
+    var socket = io.connect('http://' + window.location.hostname);
 
     var chat = {  
                 
