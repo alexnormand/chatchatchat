@@ -81,8 +81,8 @@
                         });
                         
                         // Remove Choose Name input DOM Nodes 
-                        this.input.parentElement.removeChild(this.input.nextSibling);
-                        this.input.parentElement.removeChild(this.input);                
+                        this.input.parentNode.removeChild(this.input.nextSibling);
+                        this.input.parentNode.removeChild(this.input);                
                     }
                 }
             },
