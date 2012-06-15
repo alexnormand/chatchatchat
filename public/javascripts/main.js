@@ -76,19 +76,14 @@
             var that = this;
 
             //socket.io event handlers
-            socket.on('welcome', function (data) {
-                that.events.welcome.call(that, data);
-            });            
-            socket.on('message', function (data) {
-                that.events.message.call(that, data);
-            });
-
+            socket.on('welcome', this.events.welcome.bind(this));
+            socket.on('message', this.events.message.bind(this));
             
             // Choose Name Event handler
             document.querySelector('button')
-                    .addEventListener('click', function () {
-                        that.choosename.call(that);
-                    }, false);
+                    .addEventListener('click', 
+                                      this.choosename.bind(this), 
+                                      false);
 
             this.input.addEventListener('keypress', function (e) {                        
                 if (e.keyCode === 13) {
@@ -98,9 +93,9 @@
             
 
             // Send message Event Handler
-            this.sendMsg.addEventListener('click', function () {
-                that.sendMessage.call(that);
-            }, false);
+            this.sendMsg.addEventListener('click', 
+                                          this.sendMessage.bind(this),
+                                          false);
 
 
             this.inputMsg.addEventListener('keypress', function (e) {
